@@ -3,10 +3,11 @@
 **✅ Prompt 1: Repo Skeleton + UI Shell - COMPLETE**
 **✅ Prompt 2: Shared Types & Contracts - COMPLETE**
 **✅ Prompt 3: OpenAPI Endpoint Listing - COMPLETE**
+**✅ Prompt 4: Form Model Generation - COMPLETE**
 
 "Colab for Apps" - Upload FastAPI projects → auto-generate Run Pages from OpenAPI → share safely.
 
-## Status: OpenAPI Parsing Ready 🎉
+## Status: Form Generation Ready 🎉
 
 ### What's Working
 - ✅ Next.js 15 + TypeScript + Tailwind CSS 3 setup
@@ -16,6 +17,7 @@
 - ✅ Shared TypeScript types (lib/contracts.ts, lib/types.ts)
 - ✅ Two sacred contracts defined: OpenAPI In → RunEnvelope Out
 - ✅ OpenAPI 3.x endpoint parsing (lib/openapi/listEndpoints.ts)
+- ✅ Form model generation from OpenAPI schemas (lib/openapi/formModel.ts)
 - ✅ TypeScript strict mode compiles with no errors
 - ✅ Dev server running on http://localhost:3000
 
@@ -42,7 +44,8 @@ runtime-0401/
 │   ├── types.ts             ✅ Project, Version, Run, Share
 │   └── openapi/
 │       ├── types.ts         ✅ Re-exports EndpointMeta
-│       └── listEndpoints.ts ✅ Parse OpenAPI → EndpointMeta[]
+│       ├── listEndpoints.ts ✅ Parse OpenAPI → EndpointMeta[]
+│       └── formModel.ts     ✅ Generate FormModel from OpenAPI schemas
 └── docs/
     ├── 00-OVERVIEW.md
     ├── 01-PROMPTS.md        (12 prompts total)
@@ -88,17 +91,28 @@ runtime-0401/
 - [x] Tested with example spec (3 endpoints extracted)
 - [x] TypeScript compiles with no errors
 
+**Prompt 4 Acceptance Criteria:**
+- [x] lib/openapi/formModel.ts created
+- [x] generateFormModel function works correctly
+- [x] Handles query parameters (Test 1 passed)
+- [x] Handles request body primitives (Test 2 passed)
+- [x] Fallback to JSON editor for complex schemas (Test 3 passed)
+- [x] Maps JSON Schema types to FormField kinds correctly
+- [x] Includes validation constraints (min/max/pattern)
+- [x] TypeScript compiles with no errors
+
 ## Next Steps
 
-Execute **Prompt 4** from `docs/01-PROMPTS.md`:
+Execute **Prompt 5** from `docs/01-PROMPTS.md`:
 
 ```
-Add form model generation from OpenAPI schemas.
+Add demo mode UI with fixture-based data.
 
 Files to create:
-- lib/openapi/generateFormModel.ts
+- app/demo/page.tsx (demo mode viewer)
+- lib/fixtures/ (example OpenAPI specs and run results)
 
-This converts OpenAPI request schemas into FormModel for auto-generated Run Page forms.
+This creates a working demo without backend integration.
 ```
 
 ## Quick Commands
@@ -139,7 +153,8 @@ Currently running at: **http://localhost:3000**
 
 **Built with: Single-prompt vertical slices, minimal complexity, demo-first approach** 🚀
 
-**Progress: 3/12 prompts complete** (25%)
+**Progress: 4/12 prompts complete** (33.3%)
 - Prompt 1: Repo Skeleton ✅
 - Prompt 2: Types & Contracts ✅
 - Prompt 3: OpenAPI Endpoint Listing ✅
+- Prompt 4: Form Model Generation ✅
