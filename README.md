@@ -4,10 +4,11 @@
 **✅ Prompt 2: Shared Types & Contracts - COMPLETE**
 **✅ Prompt 3: OpenAPI Endpoint Listing - COMPLETE**
 **✅ Prompt 4: Form Model Generation - COMPLETE**
+**✅ Prompt 5: Demo Mode UI - COMPLETE**
 
 "Colab for Apps" - Upload FastAPI projects → auto-generate Run Pages from OpenAPI → share safely.
 
-## Status: Form Generation Ready 🎉
+## Status: Working Demo Ready 🎉
 
 ### What's Working
 - ✅ Next.js 15 + TypeScript + Tailwind CSS 3 setup
@@ -18,8 +19,11 @@
 - ✅ Two sacred contracts defined: OpenAPI In → RunEnvelope Out
 - ✅ OpenAPI 3.x endpoint parsing (lib/openapi/listEndpoints.ts)
 - ✅ Form model generation from OpenAPI schemas (lib/openapi/formModel.ts)
+- ✅ **Working demo at /demo** with 3 sample endpoints
+- ✅ Auto-generated forms from OpenAPI specs
+- ✅ Mocked run execution with result viewer
 - ✅ TypeScript strict mode compiles with no errors
-- ✅ Dev server running on http://localhost:3000
+- ✅ Production build succeeds
 
 ### File Structure Created
 ```
@@ -36,9 +40,17 @@ runtime-0401/
 │   ├── page.tsx             ✅ Landing page
 │   ├── projects/
 │   │   └── page.tsx         ✅ Projects list (empty state)
+│   ├── demo/
+│   │   ├── page.tsx         ✅ Demo endpoint explorer
+│   │   ├── [endpointId]/
+│   │   │   └── page.tsx     ✅ Run page with auto-generated form
+│   │   └── openapi.json     ✅ Fixture (3 endpoints)
 │   └── globals.css
 ├── components/
-│   └── Nav.tsx              ✅ Navigation component
+│   ├── Nav.tsx              ✅ Navigation with Demo link
+│   ├── EndpointList.tsx     ✅ Display endpoints with method badges
+│   ├── FormRenderer.tsx     ✅ Auto-generate forms from FormModel
+│   └── ResultViewer.tsx     ✅ Display RunEnvelope results
 ├── lib/
 │   ├── contracts.ts         ✅ RunEnvelope, ArtifactRef, EndpointMeta, FormModel
 │   ├── types.ts             ✅ Project, Version, Run, Share
@@ -101,18 +113,29 @@ runtime-0401/
 - [x] Includes validation constraints (min/max/pattern)
 - [x] TypeScript compiles with no errors
 
+**Prompt 5 Acceptance Criteria:**
+- [x] app/demo/openapi.json fixture created (3 endpoints)
+- [x] EndpointList component displays endpoints with method badges
+- [x] FormRenderer auto-generates forms for all field types
+- [x] ResultViewer displays RunEnvelope with success/error states
+- [x] Demo page at /demo lists endpoints
+- [x] Run pages show forms and mocked results
+- [x] All field kinds supported (string, number, boolean, enum, json)
+- [x] Clean Linear-style UI implemented
+- [x] Build succeeds with no errors
+
 ## Next Steps
 
-Execute **Prompt 5** from `docs/01-PROMPTS.md`:
+Execute **Prompt 6** from `docs/01-PROMPTS.md`:
 
 ```
-Add demo mode UI with fixture-based data.
+Add file-based storage helpers.
 
 Files to create:
-- app/demo/page.tsx (demo mode viewer)
-- lib/fixtures/ (example OpenAPI specs and run results)
+- lib/storage.ts (loadProjects, saveProject, loadVersion, etc.)
+- data/.gitkeep
 
-This creates a working demo without backend integration.
+This implements JSON file persistence for projects, versions, runs, shares.
 ```
 
 ## Quick Commands
@@ -138,6 +161,8 @@ Currently running at: **http://localhost:3000**
 **Pages available:**
 - `/` - Landing page with hero
 - `/projects` - Projects list (empty state)
+- `/demo` - Working demo with 3 endpoints ⭐
+- `/demo/GET%20%2Fhello` - Example run page
 - `/new` - Not yet created (404 for now)
 
 ## Documentation
@@ -153,8 +178,9 @@ Currently running at: **http://localhost:3000**
 
 **Built with: Single-prompt vertical slices, minimal complexity, demo-first approach** 🚀
 
-**Progress: 4/12 prompts complete** (33.3%)
+**Progress: 5/12 prompts complete** (41.7%)
 - Prompt 1: Repo Skeleton ✅
 - Prompt 2: Types & Contracts ✅
 - Prompt 3: OpenAPI Endpoint Listing ✅
 - Prompt 4: Form Model Generation ✅
+- Prompt 5: Demo Mode UI ✅

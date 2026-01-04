@@ -20,6 +20,12 @@ export default function Nav() {
                 Projects
               </Link>
               <Link
+                href="/demo"
+                className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-700 hover:text-gray-900"
+              >
+                Demo
+              </Link>
+              <Link
                 href="/new"
                 className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-700 hover:text-gray-900"
               >
