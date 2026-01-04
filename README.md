@@ -2,10 +2,11 @@
 
 **✅ Prompt 1: Repo Skeleton + UI Shell - COMPLETE**
 **✅ Prompt 2: Shared Types & Contracts - COMPLETE**
+**✅ Prompt 3: OpenAPI Endpoint Listing - COMPLETE**
 
 "Colab for Apps" - Upload FastAPI projects → auto-generate Run Pages from OpenAPI → share safely.
 
-## Status: Types & Contracts Defined 🎉
+## Status: OpenAPI Parsing Ready 🎉
 
 ### What's Working
 - ✅ Next.js 15 + TypeScript + Tailwind CSS 3 setup
@@ -14,6 +15,7 @@
 - ✅ Projects page with empty state
 - ✅ Shared TypeScript types (lib/contracts.ts, lib/types.ts)
 - ✅ Two sacred contracts defined: OpenAPI In → RunEnvelope Out
+- ✅ OpenAPI 3.x endpoint parsing (lib/openapi/listEndpoints.ts)
 - ✅ TypeScript strict mode compiles with no errors
 - ✅ Dev server running on http://localhost:3000
 
@@ -37,7 +39,10 @@ runtime-0401/
 │   └── Nav.tsx              ✅ Navigation component
 ├── lib/
 │   ├── contracts.ts         ✅ RunEnvelope, ArtifactRef, EndpointMeta, FormModel
-│   └── types.ts             ✅ Project, Version, Run, Share
+│   ├── types.ts             ✅ Project, Version, Run, Share
+│   └── openapi/
+│       ├── types.ts         ✅ Re-exports EndpointMeta
+│       └── listEndpoints.ts ✅ Parse OpenAPI → EndpointMeta[]
 └── docs/
     ├── 00-OVERVIEW.md
     ├── 01-PROMPTS.md        (12 prompts total)
@@ -76,18 +81,24 @@ runtime-0401/
 - [x] TypeScript compiles with no errors
 - [x] Types can be imported from other files
 
+**Prompt 3 Acceptance Criteria:**
+- [x] lib/openapi/listEndpoints.ts created
+- [x] Function parses OpenAPI 3.x specs correctly
+- [x] Returns EndpointMeta[] with id, method, path, summary, description
+- [x] Tested with example spec (3 endpoints extracted)
+- [x] TypeScript compiles with no errors
+
 ## Next Steps
 
-Execute **Prompt 3** from `docs/01-PROMPTS.md`:
+Execute **Prompt 4** from `docs/01-PROMPTS.md`:
 
 ```
-Add file-based storage layer.
+Add form model generation from OpenAPI schemas.
 
 Files to create:
-- lib/storage.ts (loadProjects, saveProject, loadVersion, etc.)
-- data/.gitkeep (create /data directory)
+- lib/openapi/generateFormModel.ts
 
-This implements JSON file persistence for projects, versions, runs, shares.
+This converts OpenAPI request schemas into FormModel for auto-generated Run Page forms.
 ```
 
 ## Quick Commands
@@ -128,6 +139,7 @@ Currently running at: **http://localhost:3000**
 
 **Built with: Single-prompt vertical slices, minimal complexity, demo-first approach** 🚀
 
-**Progress: 2/12 prompts complete** (16.7%)
+**Progress: 3/12 prompts complete** (25%)
 - Prompt 1: Repo Skeleton ✅
 - Prompt 2: Types & Contracts ✅
+- Prompt 3: OpenAPI Endpoint Listing ✅
